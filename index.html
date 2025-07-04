@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Chaunsa</title>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -14,103 +14,99 @@
     }
 
     body {
-      background: linear-gradient(to right top, #fef9f7, #ffe3e3, #ffdad4);
+      background: linear-gradient(to right top, #fefcfa, #ffe5e5, #ffd7d7);
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      overflow-x: hidden;
-      padding: 40px 10px;
+      padding: 40px 20px;
     }
 
     .container {
       background: white;
+      border-radius: 2rem;
       padding: 3rem;
-      border-radius: 2rem;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-      text-align: center;
-      max-width: 500px;
+      max-width: 550px;
       width: 100%;
-      height: 550px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
       animation: fadeIn 0.6s ease;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .navbar {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 20px;
-      z-index: 10;
-      flex-wrap: nowrap;
-    }
-
-    .nav-btn {
-      white-space: nowrap;
-      background-color: transparent;
-      border: 2px solid #ff7a5c;
-      padding: 0.5rem 1.2rem;
-      border-radius: 2rem;
-      color: #ff7a5c;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .nav-btn:hover {
-      background-color: #ff7a5c;
-      color: white;
+      text-align: center;
     }
 
     .title {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
+      color: #ff5a5f;
       font-weight: 600;
-      color: #ff7a5c;
       margin-bottom: 1rem;
     }
 
     .subtitle {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #444;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .custom-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .option-btn {
+      background-color: #ffeaea;
+      color: #ff5a5f;
+      border: 2px solid transparent;
+      padding: 0.6rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .option-btn:hover {
+      background-color: #ffdada;
+    }
+
+    .option-btn.selected {
+      background-color: #ff5a5f;
+      color: white;
+      border-color: #e44a50;
     }
 
     textarea {
       width: 100%;
+      margin-top: 1rem;
       padding: 1rem;
       border-radius: 1rem;
       border: 1.5px solid #ffd0c2;
-      resize: none;
       font-size: 1rem;
-      min-height: 120px;
-      margin-bottom: 1.2rem;
+      min-height: 130px;
+      resize: vertical;
       outline: none;
       transition: all 0.2s ease;
     }
 
     textarea:focus {
-      border-color: #ff7a5c;
-      box-shadow: 0 0 0 3px rgba(255, 122, 92, 0.2);
+      border-color: #ff5a5f;
+      box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.2);
     }
 
-    button {
-      background-color: #ff7a5c;
+    button[type="submit"] {
+      background-color: #ff5a5f;
       color: white;
       border: none;
       padding: 0.9rem 2rem;
       border-radius: 2rem;
       font-size: 1rem;
       cursor: pointer;
+      margin-top: 1rem;
       transition: all 0.3s ease;
     }
 
-    button:hover {
-      background-color: #ff4d2f;
+    button[type="submit"]:hover {
+      background-color: #e53e44;
       transform: translateY(-2px);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
@@ -125,22 +121,6 @@
 
     .visible {
       opacity: 1;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .about-content {
-      font-size: 1rem;
-      color: #444;
-      line-height: 1.6;
-      text-align: left;
-      margin-top: 1rem;
-    }
-
-    .about-content strong {
-      color: #ff7a5c;
     }
 
     @keyframes fadeIn {
@@ -158,59 +138,71 @@
       .container {
         padding: 2rem;
         border-radius: 1.5rem;
-        height: auto;
       }
 
       .title {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
 
-      .about-content {
-        font-size: 0.95rem;
-      }
-
-      .nav-btn {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
+      .option-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.8rem;
       }
     }
   </style>
 </head>
 <body>
-
-  <div class="navbar">
-    <button class="nav-btn" onclick="showCheckIn()">Check In</button>
-    <button class="nav-btn" onclick="showAbout()">About Chaunsa</button>
-  </div>
-
-  <!-- Check-In Page -->
-  <div class="container" id="checkinPage">
+  <div class="container">
     <h1 class="title">Chaunsa</h1>
-    <p class="subtitle">What’s on your mind today?</p>
-    <form id="checkinForm" action="https://formspree.io/f/mjkrbjqn" method="POST">
-      <textarea name="message" placeholder="Type how you feel here... 💬 and get a human response" required></textarea>
-      <button type="submit">Send</button>
-      <p class="message" id="thankYouMessage">Thank you for sharing. We'll check in with you soon. 🌸</p>
+    <p class="subtitle">Your truth matters. Select what happened and share freely. You're safe here.</p>
+
+    <form id="ventForm" action="https://formspree.io/f/mjkrbjqn" method="POST">
+      <!-- Hidden input to store the selected category -->
+      <input type="hidden" name="category" id="selectedCategory" required />
+
+      <div class="custom-panel">
+        <button type="button" class="option-btn">Emotional manipulation</button>
+        <button type="button" class="option-btn">Cheating</button>
+        <button type="button" class="option-btn">Harassment</button>
+        <button type="button" class="option-btn">Ghosting</button>
+        <button type="button" class="option-btn">Gaslighting</button>
+        <button type="button" class="option-btn">Controlling behavior</button>
+        <button type="button" class="option-btn">Financial abuse</button>
+        <button type="button" class="option-btn">Public shaming</button>
+        <button type="button" class="option-btn">Narcissism</button>
+        <button type="button" class="option-btn">Other</button>
+      </div>
+
+      <textarea name="story" placeholder="Write your story anonymously... 💬" required></textarea>
+      <button type="submit">Submit</button>
+
+      <p class="message" id="thankYouMessage">Thank you for sharing. Your voice matters. 💗</p>
     </form>
   </div>
 
-  <!-- About Page -->
-  <div class="container hidden" id="aboutPage">
-    <h1 class="title">About Chaunsa</h1>
-    <div class="about-content">
-      <p><strong>Chaunsa</strong> is a quiet, comforting space designed to help you check in with your emotions. Whether you’re having a high, a low, or something in between, this space exists for you to pause and be heard.</p>
-      <p>Messages shared here are sent directly to someone who will gently check in with you — no judgment, no pressure, just presence.</p>
-      <p><strong>You matter.</strong> Even when things feel messy or uncertain. Chaunsa is a reminder that being human is enough. 🍑</p>
-    </div>
-  </div>
-
   <script>
-    const form = document.getElementById("checkinForm");
+    const form = document.getElementById("ventForm");
     const message = document.getElementById("thankYouMessage");
-    const checkinPage = document.getElementById("checkinPage");
-    const aboutPage = document.getElementById("aboutPage");
+    const categoryInput = document.getElementById("selectedCategory");
+    const buttons = document.querySelectorAll(".option-btn");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // Unselect all
+        buttons.forEach(b => b.classList.remove("selected"));
+        // Select clicked
+        btn.classList.add("selected");
+        categoryInput.value = btn.innerText;
+      });
+    });
 
     form.addEventListener("submit", function(e) {
+      if (!categoryInput.value) {
+        alert("Please select a category.");
+        e.preventDefault();
+        return;
+      }
+
       e.preventDefault();
       const formData = new FormData(form);
       fetch(form.action, {
@@ -221,6 +213,8 @@
         if (response.ok) {
           message.classList.add("visible");
           form.reset();
+          buttons.forEach(b => b.classList.remove("selected"));
+          categoryInput.value = "";
         } else {
           message.textContent = "Oops! Something went wrong.";
           message.classList.add("visible");
@@ -230,16 +224,6 @@
         message.classList.add("visible");
       });
     });
-
-    function showAbout() {
-      checkinPage.classList.add("hidden");
-      aboutPage.classList.remove("hidden");
-    }
-
-    function showCheckIn() {
-      aboutPage.classList.add("hidden");
-      checkinPage.classList.remove("hidden");
-    }
   </script>
 </body>
 </html>
